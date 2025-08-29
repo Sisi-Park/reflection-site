@@ -204,7 +204,11 @@
       $('#experiment').value=s.notes[k]?.experiment||'';
       $('#savedAt').textContent=s.notes[k]?.savedAt?`Saved ${new Date(s.notes[k].savedAt).toLocaleTimeString()}`:'';
       $('#goalShort').value=s.goals.short||''; $('#goalLong').value=s.goals.long||'';
-      $('#swotS').value=s.swot.S||''; $('#swotW').value=s.swot.W||''; $('#swotO').value=s.swot.O||''; $('#swotT').value=s.swot.T||'';
+      $('#swotS').value = (s.swot?.S ?? defaultData.swot.S) || '';
+      $('#swotW').value = (s.swot?.W ?? defaultData.swot.W) || '';
+      $('#swotO').value = (s.swot?.O ?? defaultData.swot.O) || '';
+      $('#swotT').value = (s.swot?.T ?? defaultData.swot.T) || '';
+
       document.querySelectorAll('.check').forEach(cb=>cb.checked=!!s.progress[cb.dataset.key]);
       $('#daysUsed').textContent=s.daysUsed||0; $('#streak').textContent=s.streak||0; $('#completed').textContent=s.completed||0; $('#streakTag').textContent=`Streak: ${s.streak||0}`;
 
